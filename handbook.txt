@@ -1,0 +1,208 @@
+Introduction:
+
+
+	This book is meant as a guideline for every member of the Work-Work community. It contains usefull information as well as rules for the co-working space.
+
+	Every new member of the Work-Work community is required to read the house rules, and is encouraged to read the whole handbook. If you have any questions, please contact one of the hosts.
+
+	At Work-Work we really appreciate our community. The people makes the place, so we do not want to force many rules on people, but it is, however, a necessity that there exists some rules.
+
+House Rules:
+	
+	Intro:
+		The house rules are divided into 4 groups. "You Must", "You Should", "You Should not", and "You Can not". The groups should be pretty self explaining. 
+		Out of these groups, the most important are "You Must" and "You Can not". These are rules, the "You Should" and "You Should not" are more guidelines than actual rules.
+
+
+	You must:
+		-Obey the "must" and "can't" part of these rules.
+		-Clean up after yourself.
+		-Tur of the light, and turn the alarm on, if you are the last person to leave the house.
+		-read, and be familiar with the HMS-instructions. They are on the walls on every floor.
+		-know what is part of the "skjenkeareale", and what is not.
+		-know the fire instructions.
+		-Respect other peoples private properties. Do not borrow other peoples equipment without their permission. Also don't steal and kill and follow Norwegian law.
+		-announce what material is under NDA, if any, prior to showing it to others.
+	You should:
+		-Follow the "should" and "shouldn't" part of these rules.
+		-involve yourself in others work. 
+		-help others that ask for help.
+		-Give constructive feedback, both positive and negative. Also say what you think, don't be afraid to say things like "I think this part could be better". 
+		-talk to people you don't know. Get to know everyone in the community!
+		-actively contribute in the "pay it forward" culture. 
+		-show other people what you are working on. 
+		-be inclusive of people from "the outside". Feel free to invite them in and show them around.
+		-use the bar as a prototyping platform. It is your la-BAR-atory. Ask many people, accelerate your development.
+	You should not:
+		-Break the "should" and "shouldn't" part of these rules.
+		-disturb others when they are working.
+		-let food and other thrash lay around to rot.
+		-talk negatively to or about other people.
+		-hide your ideas. By exposing them to other people the ideas grow and become better.
+		-have material under NDA
+	You can not:
+		-Break the "must" or "can't" part of these rules.
+		-Access the bar area outside of the opening hours of the bar. 
+		-Bring alcohol to or from the bar area.
+		-Bring pets into the house
+		-Talk to outsiders about the projects other fellow Work-Workers are working on without their approval, unless that information is already public.
+		-Socially exclude or bully people.
+
+
+
+Work-Work, the Game!(TM)
+	
+	Tutorial
+		You are new at Work-Work, welcome! This is your first day here. You have signed the contract and hopefully gotten your key. You might be feeling cheerful, or even a bit confused or scared. "What should I do?", "How does stuff work here?", "Who are all these people?" and "Who is Marius, Sverre and Stephan(MSS)?". All of these are questions you might have. "Work-Work, the Game!"(TM) is a text-only game that will guilde you through your first day, week or even year at Work-Work, and help you find the answers to all of your questions!
+
+		The game is divided into levels. Each level has some quests. Some of them are main quests (manditory), others are side quests (non-manditory). To proceeded to the next level, you must complete all the main quests from your current level.
+
+	NPCs:
+		MMS: Any one of Marius, Sverre, and Stephan.
+
+		Marius: The guy with the long beard.
+		Sverre: The guy with the wide beard.
+		Stephan: The guy with the long hear.
+		Mystery Man: The guy with the wide hear.
+
+	Work-Work level 1: Your First Day
+
+		Main Quest: Get to see the entire house.
+			Reward: Knowledge of where things are located at Work-Work.
+			Tips: Talk to MSS and ask for a guided tour.
+			XP: 35
+
+		Main Quest: Select a desk in the co-work
+			Reward: A place to sit and work.
+			Tips: Talk to Stephan.
+			XP: 40
+
+		Side Quest: Connect to the Work-Work WiFi
+			Reward: Infinite wisdom and enterntainment. Increased productivity.
+			Tips: There are no password.
+			XP: 10
+
+	Work-Work level 2: The Basics
+		Main Quest: Read the Work-Work House Rules
+			Reward: Understaing of jungle-rules of Work-Work
+			Tips: The rules can be found in this here handbook.
+			XP: 50
+
+		Main Quest: Join Slack
+			Reward: Communication platform to instantly communicate with anyone in the Work-Work community
+			Tips: Ask anyone in the community to invite you.
+			XP: 17
+
+		Main Quest: Learn how to book a meeting room
+			Reward: Ability to host meetings
+			Tips:	- Go to work-work.no/booking
+					- Ask on slack, or MSS, for help.
+			XP: 13
+
+		Side Quest: Join the Facebook group
+			Reward: Another Communication platform where MSS announce events.
+			Tips: Ask MMS in the community to invite you.
+			XP: 12
+
+		Side Quest: Claim storage space
+			Reward: A place to put your loot
+			Tips: There are plenty of free storage containers around. If they are empty and un-marked, they are up for grabs.
+			XP: 5
+
+	Work-Work level 3: The Intricacies
+		Main Quest: Join, and introduce yourself at, the Community Lunch, Fridays at 11:00.
+			Reward: 2d6 Friends
+			Tips: Give your name and talk about what you do for work.
+			XP: 20
+
+		Main Quest: Explore every room and introduce yourself to as many Community Members as possible.
+			Reward: 5d10 Friends
+			Tips: 	- Don't interrupt people who is very obviously "plugged in" and working hard. 
+					- The Community Members are scripted to talk to you if they see you.
+			XP: 63
+
+		Main Quest: Join one of the Work-Work events
+			Reward: Knowledge provided by given event.
+			Tips: 	- Follow Work-Work on facebook to get a feed of every event. 
+					- A list of all events is available on work-work.no/event
+			XP: 25
+
+		Side Quest: Hang something on the wall
+			Reward: Teretorial controll
+			Tips:	- Ask MSS before screwing large object to the wall.
+					- Feel free to hang up nails for picture-frames etc.
+			XP: 28
+
+	Work-Work level 4: The Contributor
+
+		Main Quest: Contribute, in any way, to any of the Community projects. (Repeatable)
+			Reward: Bragging rights 
+			Tips:	- Look at the Work-Work github page (github.com/workwork) for a list of all/most community projects
+					- Ask people on slack for inspiration and help to get started.
+			XP: 18
+
+		Side Quest: Initialize a Community Project.
+			Reward: Massive bragging rights
+			Tips: 	- Coordinate with others on slack
+					- Read the Community Projects 101 guide (TBA)
+			XP: 87
+			Sub Quests:
+				Involve another person in the project (Repeatable)
+					Reward: Larger workfroce
+					Tips: Talk to pepole on slack and in real life.
+					XP: 21
+				Pitch your project at the Community Lunch
+					Reward: Valuable feedback and new ideas.
+					Tips: Announce on slack, or through MSS, that you intend to talk about the project.
+					XP: 32
+
+		Side Quest: Recruit a new Community Member
+			Reward: Free coffee for a month in the bar
+			Tips: Stephan can provide a guided tour for potential new members.
+			XP: 79
+
+
+	Work-Work level 5: The Legend
+		Main Quest: Host an event which is relevant for people in, or outside of, the Community.
+			Reward: - Bragging rights.
+					- Deeper understanding of your topic.
+			Tips: 	- Discuss with people in the Community for inspiration and guidance.
+					- Check work-work.no/booking for available spots.
+			XP: 74
+
+		Main Quest: Release a successful game or product
+			Reward: A space in the "Work-Work projects wall". (TBA)
+			Tips: You can host, for free, a release party at the Work-Work bar if you want.
+			XP: 350
+
+		Main Quest: Grow your business so much that you need to move out of Work-Work
+			Reward:	- Eternal bragging rights
+					- A space in the Hall Of Fame at Work-Work. First to complete this quest will get the honor of opening the Hall of Fame.
+					- Cake
+			Tips:	- Make a great product.
+					- Make a lot of money.
+			XP: 2800
+
+		Side Quest: Make something usefull out of a Pallet
+			Reward: - Bragging rights
+					- A usefull object made from pallets
+			Tips: Talk to the house master pallet maker, Stephan.
+			XP: 50
+
+
+
+//NOTES:
+Stuff they do/must learn:
+		X how to book a meeting room
+		X "Introduce themselves to everyone"
+		X Come to a community lunch
+		X Join slack + face
+		X Come to an event
+		X Host an event (something they are good at)
+		X Contribute to a community project
+		X Read the house rules
+		X Pallets is the shit
+
+
+
+
