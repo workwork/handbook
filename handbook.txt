@@ -101,7 +101,7 @@ Work-Work, the Game!(TM)
 
 		Side Quest: Join the Facebook group
 			Reward: Another Communication platform where MSS announce events.
-			Tips: Ask MMS in the community to invite you.
+			Tips: Ask MMS to invite you.
 			XP: 12
 
 		Side Quest: Claim storage space
@@ -128,7 +128,7 @@ Work-Work, the Game!(TM)
 			XP: 25
 
 		Side Quest: Hang something on the wall
-			Reward: Teretorial controll
+			Reward: Teretorial control
 			Tips:	- Ask MSS before screwing large object to the wall.
 					- Feel free to hang up nails for picture-frames etc.
 			XP: 28
