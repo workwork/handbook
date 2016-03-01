@@ -21,117 +21,176 @@
 			padding: 0;
 			width: 100vw;
 		}
-		img#thegame{
+		img#thegamePicture{
 			width: 50vw;
 			margin: 0 auto;
 		}
 	</style>
-</head>
-<body>
-	<header>
-		<img id="cover" src="./Work-Work Handbook.jpg">
-		<!-- <h1>Work-Work Handbook</h1> -->
-		<nav>
-			<ul>
-				<li>Introduction</li>
-			</ul>
-		</nav>
-	</header>
-
-	<section>
-	
-		<article>
-			<header>
-				<h2>Introduction</h2>
-			</header>
-			<p>This book is meant as a guideline for every member of the Work-Work community. It contains usefull information as well as rules for the co-working space.</p>
-			<p>Every new member of the Work-Work community is required to read the house rules, and is encouraged to read the whole handbook. If you have any questions, please contact one of the hosts.</p>
-			<p>At Work-Work we really appreciate our community. The people makes the place, so we do not want to force many rules on people, but it is, however, a necessity that there exists some rules.</p>
-		</article>
-		
-		<article>
-			<header>
-				<h2>House Rules</h2>
-			</header>
-			<h3>Intro</h3>
-			<p>The house rules are divided into 4 groups. "You Must", "You Should", "You Should not", and "You Can not". The groups should be pretty self explaining. </p>
-			<p>Out of these groups, the most important are "You Must" and "You Can not". These are rules, the "You Should" and "You Should not" are more guidelines than actual rules.</p>
-
-			<h3>You must:</h3>
-			<ul>
-				<li>Obey the "must" and "can't" part of these rules.<li>
-				<li>Clean up after yourself.<li>
-				<li>Tur of the light, and turn the alarm on, if you are the last person to leave the house.<li>
-				<li>read, and be familiar with the HMS-instructions. They are on the walls on every floor.<li>
-				<li>know what is part of the "skjenkeareale", and what is not.<li>
-				<li>know the fire instructions.<li>
-				<li>Respect other peoples private properties. Do not borrow other peoples equipment without their permission. Also don't steal and kill and follow Norwegian law.<li>
-				<li>announce what material is under NDA, if any, prior to showing it to others.<li>
-			</ul>
-			<h3>You should:</h3>
-			<ul>
-				<li>Follow the "should" and "shouldn't" part of these rules.<li>
-				<li>involve yourself in others work. <li>
-				<li>help others that ask for help.<li>
-				<li>Give constructive feedback, both positive and negative. Also say what you think, don't be afraid to say things like "I think this part could be better". <li>
-				<li>talk to people you don't know. Get to know everyone in the community!<li>
-				<li>actively contribute in the "pay it forward" culture. <li>
-				<li>show other people what you are working on. <li>
-				<li>be inclusive of people from "the outside". Feel free to invite them in and show them around.<li>
-				<li>use the bar as a prototyping platform. It is your la-BAR-atory. Ask many people, accelerate your development.<li>
-			</ul>
-			<h3>You should not:</h3>
-			<ul>
-				<li>Break the "should" and "shouldn't" part of these rules.<li>
-				<li>disturb others when they are working.<li>
-				<li>let food and other thrash lay around to rot.<li>
-				<li>talk negatively to or about other people.<li>
-				<li>hide your ideas. By exposing them to other people the ideas grow and become better.<li>
-				<li>have material under NDA<li>
-			</ul>
-			<h3>You can not:</h3>
-			<ul>
-				<li>Break the "must" or "can't" part of these rules.<li>
-				<li>Access the bar area outside of the opening hours of the bar. <li>
-				<li>Bring alcohol to or from the bar area.<li>
-				<li>Bring pets into the house<li>
-				<li>Talk to outsiders about the projects other fellow Work-Workers are working on without their approval, unless that information is already public.<li>
-				<li>Socially exclude or bully people.<li>
-			</ul>
-		</article>
-		<article>
-			<header>
-				<!-- <h2>Work-Work, the Game!</h2> -->
-				<img id="thegame" src="./Work-Work The Game.jpg">
-			</header>
-
-			<h3>Tutorial</h3>
-			<p>You are new at Work-Work, welcome! This is your first day here. You have signed the contract and hopefully gotten your key. You might be feeling cheerful, or even a bit confused or scared. "What should I do?", "How does stuff work here?", "Who are all these people?" and "Who is Marius, Sverre and Stephan(MSS)?". All of these are questions you might have. "Work-Work, the Game!"(TM) is a text-only game that will guilde you through your first day, week or even year at Work-Work, and help you find the answers to all of your questions!</p>
-			<p>The game is divided into levels. Each level has some quests. Some of them are main quests (manditory), others are side quests (non-manditory). To proceeded to the next level, you must complete all the main quests from your current level.</p>
-
-			<h3>NPCs:</h3>
-			<ul>
-				<li><span class="npc">MMS</span>: Any one of Marius, Sverre, and Stephan.</li>
-				<li><span class="npc">Marius</span>: The guy with the long beard.</li>
-				<li><span class="npc">Sverre</span>: The guy with the wide beard.</li>
-				<li><span class="npc">Stephan</span>: The guy with the long hear.</li>
-				<li><span class="npc">Mystery Man</span>: The guy with the wide hear.</li>
-			</ul>
-		
-			
-		</article>
-	</section>
-
-	<aside>
-		<h2>About section</h2>
-		<p>Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-	</aside>
-
-	<footer>
-		<p>MIT License</p>
-	</footer>
-
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="node_modules/materialize-css/bin/materialize.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.parallax').parallax();
+			$('.scrollspy').scrollSpy();
+			$('.materialboxed').materialbox();
+		});
+	</script>
+</head>
+<body>
+	
+	<header>
+		<div class="parallax-container">
+			<div class="parallax"><img src="./Work-Work Handbook.jpg"></div>
+		</div>
+		<!-- <img id="cover" src="./Work-Work Handbook.jpg"> -->
+		<!-- <h1>Work-Work Handbook</h1> -->
+		
+	</header>
+
+	<main>
+	<div class="container">
+	<div class="row">
+		
+		<nav>
+			<div class="nav-wrapper">
+				
+				<ul id="nav-mobile" class="left hide-on-med-and-down">
+					<li><a href="#introduction">Introduction</a></li>
+					<li><a href="#houserules">House Rules</a></li>
+					<li><a href="#thegame">Work-Work: The Game</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<!-- <div class="col hide-on-small-only m3 l2 right">
+			<ul class="section table-of-contents">
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#houserules">House Rules</a></li>
+				<li><a href="#thegame">Work-Work: The Game</a></li>
+			</ul>
+		</div> -->
+
+		<section>
+			<article id="introduction" class="section scrollspy">
+				<header>
+					<h2>Introduction</h2>
+				</header>
+				<p>This book is meant as a guideline for every member of the Work-Work community. It contains usefull information as well as rules for the co-working space.</p>
+				<p>Every new member of the Work-Work community is required to read the house rules, and is encouraged to read the whole handbook. If you have any questions, please contact one of the hosts.</p>
+				<p>At Work-Work we really appreciate our community. The people makes the place, so we do not want to force many rules on people, but it is, however, a necessity that there exists some rules.</p>
+			</article>
+			
+			<article id="houserules" class="section scrollspy">
+				<header>
+					<h2>House Rules</h2>
+				</header>
+				<h3>Intro</h3>
+				<p>The house rules are divided into 4 groups. "You Must", "You Should", "You Should not", and "You Can not". The groups should be pretty self explaining. </p>
+				<p>Out of these groups, the most important are "You Must" and "You Can not". These are rules, the "You Should" and "You Should not" are more guidelines than actual rules.</p>
+
+				<ul class="collection with-header">
+					<li class="collection-header"><h4>You Must:</h4></li>
+					<li class="collection-item"><div>Obey the "must" and "can't" part of these rules.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>Clean up after yourself.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>Tur of the light, and turn the alarm on, if you are the last person to leave the house.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>read, and be familiar with the HMS-instructions. They are on the walls on every floor.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>know what is part of the "skjenkeareale", and what is not.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>know the fire instructions.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>Respect other peoples private properties. Do not borrow other peoples equipment without their permission. Also don't steal and kill and follow Norwegian law.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>announce what material is under NDA, if any, prior to showing it to others.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+				</ul>
+
+				<ul class="collection with-header">
+					<li class="collection-header"><h4>You Should:</h4></li>
+					<li class="collection-item"><div>Follow the "should" and "shouldn't" part of these rules.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>involve yourself in others work. <a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>help others that ask for help.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>Give constructive feedback, both positive and negative. Also say what you think, don't be afraid to say things like "I think this part could be better". <a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>talk to people you don't know. Get to know everyone in the community!<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>actively contribute in the "pay it forward" culture. <a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>show other people what you are working on. <a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>be inclusive of people from "the outside". Feel free to invite them in and show them around.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+					<li class="collection-item"><div>use the bar as a prototyping platform. It is your la-BAR-atory. Ask many people, accelerate your development.<a href="#!" class="secondary-content"><i class="material-icons">done</i></a></div><li>
+				</ul>
+
+				<ul class="collection with-header">
+					<li class="collection-header"><h4>You Should Not:</h4></li>
+					<li class="collection-item"><div>Break the "should" and "shouldn't" part of these rules.<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+					<li class="collection-item"><div>disturb others when they are working.<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+					<li class="collection-item"><div>let food and other thrash lay around to rot.<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+					<li class="collection-item"><div>talk negatively to or about other people.<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+					<li class="collection-item"><div>hide your ideas. By exposing them to other people the ideas grow and become better.<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+					<li class="collection-item"><div>have material under NDA<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+				</ul>
+
+				<ul class="collection with-header">
+					<li class="collection-header"><h4>You Can Not:</h4></li>
+					<li class="collection-item"><div>Break the "must" or "can't" part of these rules.<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+					<li class="collection-item"><div>Access the bar area outside of the opening hours of the bar. <a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+					<li class="collection-item"><div>Bring alcohol to or from the bar area.<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+					<li class="collection-item"><div>Bring pets into the house<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+					<li class="collection-item"><div>Talk to outsiders about the projects other fellow Work-Workers are working on without their approval, unless that information is already public.<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+					<li class="collection-item"><div>Socially exclude or bully people.<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div><li>
+				</ul>
+			</article>
+			<article id="thegame" class="section scrollspy">
+				<header>
+					<!-- <h2>Work-Work, the Game!</h2> -->
+					<img id="thegamePicture" class="materialboxed" data-caption="Work-Work: The Game" src="./Work-Work The Game.jpg">
+
+					<!-- <div class="parallax-container">
+				    	<div class="parallax"><img src="./Work-Work The Game.jpg"></div>
+					</div> -->
+				</header>
+
+				<h3>Tutorial</h3>
+				<p>You are new at Work-Work, welcome! This is your first day here. You have signed the contract and hopefully gotten your key. You might be feeling cheerful, or even a bit confused or scared. "What should I do?", "How does stuff work here?", "Who are all these people?" and "Who is Marius, Sverre and Stephan(MSS)?". All of these are questions you might have. "Work-Work, the Game!"(TM) is a text-only game that will guilde you through your first day, week or even year at Work-Work, and help you find the answers to all of your questions!</p>
+				<p>The game is divided into levels. Each level has some quests. Some of them are main quests (manditory), others are side quests (non-manditory). To proceeded to the next level, you must complete all the main quests from your current level.</p>
+
+				<h3>NPCs:</h3>
+				<ul>
+					<li><span class="npc">MMS</span>: Any one of Marius, Sverre, and Stephan.</li>
+					<li><span class="npc">Marius</span>: The guy with the long beard.</li>
+					<li><span class="npc">Sverre</span>: The guy with the wide beard.</li>
+					<li><span class="npc">Stephan</span>: The guy with the long hear.</li>
+					<li><span class="npc">Mystery Man</span>: The guy with the wide hear.</li>
+				</ul>
+			
+				
+			</article>
+		</section>
+		</div>
+		</div>
+	</main>
+
+
+	<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Work-Work Handbook 2016</h5>
+                <p class="grey-text text-lighten-4">This handbook is meant for internal use at the Work-Work co-working space.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+			© 2016 Rolig Bare AS
+            <a class="grey-text text-lighten-4 right" href="work-work.no">Work-Work.no</a>
+            </div>
+          </div>
+        </footer>
+
+	
 </body>
 </html>
