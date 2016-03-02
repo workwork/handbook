@@ -28,15 +28,110 @@
 			width: 50vw;
 			margin: 0 auto;
 		}
+
+		div.row div div.questDone,
+		article#thegame div.questDone {
+			background-color: #4caf50 !important; /*green darken-3*/
+			color: white;
+		}
+
+		div.row div div.questDoneEXAMPLE,
+		article#thegame div.questDoneEXAMPLE {
+			background-color: #4caf50 !important; /*green darken-3*/
+			color: white;
+		}
+
+		.quest .card-action button.complete span.post{
+			display: none;
+		}
+		.quest.questDone .card-action button.complete span.pre{
+			display: none;
+		}
+		.quest.questDone .card-action button.complete span.post{
+			display: inherit;
+		}
+		.quest.questDone .card-action button.complete{
+			background-color: #d32f2f;
+		}
+
+
+		.quest .card-action button.completeEXAMPLE span.post{
+			display: none;
+		}
+		.quest.questDoneEXAMPLE .card-action button.completeEXAMPLE span.pre{
+			display: none;
+		}
+		.quest.questDoneEXAMPLE .card-action button.completeEXAMPLE span.post{
+			display: inherit;
+		}
+		.quest.questDoneEXAMPLE .card-action button.completeEXAMPLE{
+			background-color: #d32f2f;
+		}
+
+
 	</style>
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="node_modules/materialize-css/bin/materialize.js"></script>
 
 	<script type="text/javascript">
+		function save() {
+			localStorage.setItem("quests", JSON.stringify(window.quests) )
+		}
+		function updateView() {
+			
+			$(".questDone").removeClass("questDone");
+
+			window.totalXP = 0;
+			window.quests.map(function (quest) {
+				$("#"+quest.name).addClass("questDone")
+				window.totalXP = window.totalXP + quest.xp;
+			});
+
+			//TODO: how to implement this?
+			$("#xpbar").html(window.totalXP);
+		}
+		function completedQuest(questName, xp) {
+			window.quests.push({name: questName, xp: xp})
+			updateView();
+		}
+		function undoQuest(questName) {
+			newQuests = window.quests.filter(function (element) {
+				return element.name !== questName;
+			});
+
+			window.quests = newQuests;
+
+			updateView();
+			save();
+		}
+		function InitializeGame() {
+			//The quests that are done.
+			window.quests = JSON.parse( localStorage.getItem("quests") ) || [];
+
+
+			$("button.complete").click(function () {
+				completeButton = $(this)
+				
+				var questName = completeButton.parent().parent().attr('id');
+				var questXp = parseInt(completeButton.parent().find("span.xp").html());
+					
+				if(completeButton.parent().parent().hasClass("questDone")){
+					undoQuest(questName);
+				} else {
+					completedQuest(questName, questXp);
+				}
+
+				updateView();
+				save();
+			});
+
+			updateView();
+		}
 		$(document).ready(function(){
 			$('.parallax').parallax();
-			$('.scrollspy').scrollSpy();
+			// $('.scrollspy').scrollSpy();
 			$('.materialboxed').materialbox();
+			InitializeGame();
 		});
 	</script>
 </head>
@@ -164,14 +259,61 @@
 				<div class="row">
 					<div class="col s12 m6">
 					  
-						<div class="card blue-grey darken-1">
+						<div class="card blue-grey darken-1 quest" id="Example-Main-Quest">
 							<div class="card-content white-text">
 								<!-- <span class="card-title">Main Quest</span> -->
 								<span class="card-title activator "><i class="material-icons">stars</i> Example Main Quest<i class="material-icons right">more_vert</i></span>
 								<p>Main quests are dark colored</p>
 							</div>
 							<div class="card-action">
-								<div class="white-text"><span class="yellow-text">XP:</span> 20</div>
+								<button class="completeEXAMPLE btn waves-effect waves-light right" type="submit" name="action">
+									<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+									<span class="post" >Undo <i class="material-icons right">delete</i></span>
+								</button>
+								<!-- <button class="complete"><i class="material-icons white-text right">done</i></button> -->
+								<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">2</span></div>
+								<div class="white-text"><span class="yellow-text">Rewards:</span> The rewards from completing given quest</div>
+
+
+							</div>
+							<div class="card-reveal">
+								<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
+								<p>Here are tips and hints that will make it easier for you to complete the quest.</p>
+							</div>
+						</div>
+
+
+						<div class="card quest" id="Example-Side-Quest">
+							<div class="card-content">
+								<span class="card-title activator "><i class="material-icons">turned_in</i> Example Side Quest<i class="material-icons right">more_vert</i></span>
+								<p>Side Quests are light colored</p>
+							</div>
+							<div class="card-action">
+								<button class="completeEXAMPLE btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+								<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">20</span></div>
+								<div class=""><span class="blue-text text-darken-2">Rewards:</span> The rewards from completing given quest</div>
+							</div>
+							<div class="card-reveal">
+								<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
+								<p>Here are tips and hints that will make it easier for you to complete the quest.</p>
+							</div>
+						</div>
+
+						<div class="card blue-grey darken-1 quest questDoneEXAMPLE" id="Example Completed Main Quest">
+							<div class="card-content white-text">
+								<!-- <span class="card-title">Main Quest</span> -->
+								<span class="card-title activator "><i class="material-icons">stars</i> Example Completed Main Quest<i class="material-icons right">more_vert</i></span>
+								<p>Completed Main Quests look like this</p>
+							</div>
+							<div class="card-action">
+								<button class="completeEXAMPLE btn waves-effect waves-light right" type="submit" name="action">
+									<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+									<span class="post" >Undo <i class="material-icons right">delete</i></span>
+								</button>
+								<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">20</span></div>
 								<div class="white-text"><span class="yellow-text">Rewards:</span> The rewards from completing given quest</div>
 							</div>
 							<div class="card-reveal">
@@ -181,20 +323,27 @@
 						</div>
 
 
-						<div class="card">
+
+						<div class="card quest questDoneEXAMPLE">
 							<div class="card-content">
-								<span class="card-title activator "><i class="material-icons">turned_in</i> Example Side Quest<i class="material-icons right">more_vert</i></span>
-								<p>Side Quests are light colored</p>
+								<span class="card-title activator "><i class="material-icons">turned_in</i> Example Completed Side Quest<i class="material-icons right">more_vert</i></span>
+								<p>Completed Side Quests look like this</p>
 							</div>
 							<div class="card-action">
-								<div class=""><span class="blue-text">XP:</span> 20</div>
-								<div class=""><span class="blue-text">Rewards:</span> The rewards from completing given quest</div>
+								<button class="completeEXAMPLE btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+								<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">20</span></div>
+								<div class=""><span class="blue-text text-darken-2">Rewards:</span> The rewards from completing given quest</div>
 							</div>
 							<div class="card-reveal">
 								<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
 								<p>Here are tips and hints that will make it easier for you to complete the quest.</p>
 							</div>
 						</div>
+
+
 
 					</div>
 				  </div>
@@ -204,23 +353,31 @@
 					<li><span class="npc">MMS</span>: Any one of Marius, Sverre, and Stephan.</li>
 					<li><span class="npc">Marius</span>: The guy with the long beard.</li>
 					<li><span class="npc">Sverre</span>: The guy with the wide beard.</li>
-					<li><span class="npc">Stephan</span>: The guy with the long hear.</li>
-					<li><span class="npc">Mystery Man</span>: The guy with the wide hear.</li>
+					<li><span class="npc">Stephan</span>: The guy with the long hair.</li>
+					<li><span class="npc">Mystery Man</span>: The guy with the wide hair.</li>
+					<li><span class="npc">The Community</span>: Any one, excluding yourself, of people currently inhabiting the co-working space.</li>
 				</ul>
-			
+				
+				<h3>Current Status:</h3>
+				<h6>Your XP: <span id="xpbar">0</span></h6>
+
 				<h3 id="workworklevel1" class="section scrollspy">Work-Work level 1: Your First Day</h3>
 
 
 
 
-					<div class="card blue-grey darken-1">
+					<div class="card blue-grey darken-1 quest" id="Get-to-see-the-entire-house">
 						<div class="card-content white-text">
 							<!-- <span class="card-title">Main Quest</span> -->
 							<span class="card-title activator "><i class="material-icons">stars</i> Get to see the entire house<i class="material-icons right">more_vert</i></span>
 							<p>TODO: Make description of all quests</p>
 						</div>
 						<div class="card-action">
-							<div class="white-text"><span class="yellow-text">XP:</span> 35</div>
+							<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+							<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">35</span></div>
 							<div class="white-text"><span class="yellow-text">Rewards:</span> Knowledge of where things are located at Work-Work.</div>
 						</div>
 						<div class="card-reveal">
@@ -229,14 +386,18 @@
 						</div>
 					</div>
 
-					<div class="card blue-grey darken-1">
+					<div class="card blue-grey darken-1 quest" id="Select-a-desk-in-the-co-work">
 						<div class="card-content white-text">
 							<!-- <span class="card-title">Main Quest</span> -->
 							<span class="card-title activator "><i class="material-icons">stars</i> Select a desk in the co-work<i class="material-icons right">more_vert</i></span>
 							<p>TODO: Make description of all quests</p>
 						</div>
 						<div class="card-action">
-							<div class="white-text"><span class="yellow-text">XP:</span> 40</div>
+							<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+							<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">40</span></div>
 							<div class="white-text"><span class="yellow-text">Rewards:</span> A place to sit and work.</div>
 						</div>
 						<div class="card-reveal">
@@ -245,14 +406,18 @@
 						</div>
 					</div>
 
-					<div class="card">
+					<div class="card quest" id="Connect-to-the-Work-Work-WiFi">
 						<div class="card-content">
 							<span class="card-title activator "><i class="material-icons">turned_in</i> Connect to the Work-Work WiFi<i class="material-icons right">more_vert</i></span>
 							<p>TODO: Make description of all quests</p>
 						</div>
 						<div class="card-action">
-							<div class=""><span class="blue-text">XP:</span> 10</div>
-							<div class=""><span class="blue-text">Rewards:</span> Infinite wisdom and enterntainment. Increased productivity.</div>
+							<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+							<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">10</span></div>
+							<div class=""><span class="blue-text text-darken-2">Rewards:</span> Infinite wisdom and enterntainment. Increased productivity.</div>
 						</div>
 						<div class="card-reveal">
 							<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
@@ -265,14 +430,18 @@
 				<h3 id="workworklevel2" class="section scrollspy">Work-Work level 2: The Basics</h3>
 
 	
-				<div class="card blue-grey darken-1">
+				<div class="card blue-grey darken-1 quest" id="Read-the-Work-Work-House-Rules">
 					<div class="card-content white-text">
 						<!-- <span class="card-title">Main Quest</span> -->
 						<span class="card-title activator "><i class="material-icons">stars</i> Read the Work-Work House Rules<i class="material-icons right">more_vert</i></span>
 						<p>TODO: Make description of all quests</p>
 					</div>
 					<div class="card-action">
-						<div class="white-text"><span class="yellow-text">XP:</span> 50</div>
+						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+						<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">50</span></div>
 						<div class="white-text"><span class="yellow-text">Rewards:</span> Understaing of jungle-rules of Work-Work.</div>
 					</div>
 					<div class="card-reveal">
@@ -281,14 +450,18 @@
 					</div>
 				</div>
 
-				<div class="card blue-grey darken-1">
+				<div class="card blue-grey darken-1 quest" id="Join-Slack">
 					<div class="card-content white-text">
 						<!-- <span class="card-title">Main Quest</span> -->
 						<span class="card-title activator "><i class="material-icons">stars</i> Join Slack<i class="material-icons right">more_vert</i></span>
 						<p>TODO: Make description of all quests</p>
 					</div>
 					<div class="card-action">
-						<div class="white-text"><span class="yellow-text">XP:</span> 17</div>
+						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+						<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">17</span></div>
 						<div class="white-text"><span class="yellow-text">Rewards:</span> Communication platform to instantly communicate with anyone in the Work-Work community.</div>
 					</div>
 					<div class="card-reveal">
@@ -297,14 +470,18 @@
 					</div>
 				</div>
 
-				<div class="card blue-grey darken-1">
+				<div class="card blue-grey darken-1 quest" id="Learn-how-to-book-a-meeting-room">
 					<div class="card-content white-text">
 						<!-- <span class="card-title">Main Quest</span> -->
 						<span class="card-title activator "><i class="material-icons">stars</i> Learn how to book a meeting room<i class="material-icons right">more_vert</i></span>
 						<p>TODO: Make description of all quests</p>
 					</div>
 					<div class="card-action">
-						<div class="white-text"><span class="yellow-text">XP:</span> 13</div>
+						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+						<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">13</span></div>
 						<div class="white-text"><span class="yellow-text">Rewards:</span> Ability to host meetings.</div>
 					</div>
 					<div class="card-reveal">
@@ -314,14 +491,18 @@
 					</div>
 				</div>	
 
-				<div class="card">
+				<div class="card quest" id="Join-the-Facebook-group">
 					<div class="card-content">
 						<span class="card-title activator "><i class="material-icons">turned_in</i> Join the Facebook group<i class="material-icons right">more_vert</i></span>
 						<p>TODO: Make description of all quests</p>
 					</div>
 					<div class="card-action">
-						<div class=""><span class="blue-text">XP:</span> 12</div>
-						<div class=""><span class="blue-text">Rewards:</span> Another Communication platform where MSS announce events.</div>
+						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+						<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">12</span></div>
+						<div class=""><span class="blue-text text-darken-2">Rewards:</span> Another Communication platform where MSS announce events.</div>
 					</div>
 					<div class="card-reveal">
 						<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
@@ -329,14 +510,18 @@
 					</div>
 				</div>
 
-				<div class="card">
+				<div class="card quest" id="Claim-storage-space">
 					<div class="card-content">
 						<span class="card-title activator "><i class="material-icons">turned_in</i> Claim storage space<i class="material-icons right">more_vert</i></span>
 						<p>TODO: Make description of all quests</p>
 					</div>
 					<div class="card-action">
-						<div class=""><span class="blue-text">XP:</span> 5</div>
-						<div class=""><span class="blue-text">Rewards:</span> A place to put your loot.</div>
+						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+						<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">5</span></div>
+						<div class=""><span class="blue-text text-darken-2">Rewards:</span> A place to put your loot.</div>
 					</div>
 					<div class="card-reveal">
 						<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
@@ -348,14 +533,18 @@
 			<h3 id="workworklevel3" class="section scrollspy">Work-Work level 3: The Intricacies</h3>
 
 
-				<div class="card blue-grey darken-1">
+				<div class="card blue-grey darken-1 quest" id="Join,-and-introduce-yourself-at,-the-Community-Lunch,-Fridays-at-11:00.">
 					<div class="card-content white-text">
 						<!-- <span class="card-title">Main Quest</span> -->
 						<span class="card-title activator "><i class="material-icons">stars</i> Join, and introduce yourself at, the Community Lunch, Fridays at 11:00.<i class="material-icons right">more_vert</i></span>
 						<p>TODO: Make description of all quests</p>
 					</div>
 					<div class="card-action">
-						<div class="white-text"><span class="yellow-text">XP:</span> 20</div>
+						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+						<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">20</span></div>
 						<div class="white-text"><span class="yellow-text">Rewards:</span> 2d6 Friends.</div>
 					</div>
 					<div class="card-reveal">
@@ -364,14 +553,18 @@
 					</div>
 				</div>
 		
-				<div class="card blue-grey darken-1">
+				<div class="card blue-grey darken-1 quest" id="Explore-every-room-and-introduce-yourself-to-as-many-Community-Members-as-possible.">
 					<div class="card-content white-text">
 						<!-- <span class="card-title">Main Quest</span> -->
 						<span class="card-title activator "><i class="material-icons">stars</i> Explore every room and introduce yourself to as many Community Members as possible.<i class="material-icons right">more_vert</i></span>
 						<p>TODO: Make description of all quests</p>
 					</div>
 					<div class="card-action">
-						<div class="white-text"><span class="yellow-text">XP:</span> 63</div>
+						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+						<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">63</span></div>
 						<div class="white-text"><span class="yellow-text">Rewards:</span> 5d10 Friends.</div>
 					</div>
 					<div class="card-reveal">
@@ -381,14 +574,18 @@
 					</div>
 				</div>
 
-				<div class="card blue-grey darken-1">
+				<div class="card blue-grey darken-1 quest" id="Join-one-of-the-Work-Work-events.">
 					<div class="card-content white-text">
 						<!-- <span class="card-title">Main Quest</span> -->
 						<span class="card-title activator "><i class="material-icons">stars</i> Join one of the Work-Work events.<i class="material-icons right">more_vert</i></span>
 						<p>TODO: Make description of all quests</p>
 					</div>
 					<div class="card-action">
-						<div class="white-text"><span class="yellow-text">XP:</span> 25</div>
+						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+						<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">25</span></div>
 						<div class="white-text"><span class="yellow-text">Rewards:</span> Knowledge provided by given event.</div>
 					</div>
 					<div class="card-reveal">
@@ -398,14 +595,18 @@
 					</div>
 				</div>
 
-				<div class="card">
+				<div class="card quest" id="Hang-something-on-the-wall">
 					<div class="card-content">
 						<span class="card-title activator "><i class="material-icons">turned_in</i> Hang something on the wall<i class="material-icons right">more_vert</i></span>
 						<p>TODO: Make description of all quests</p>
 					</div>
 					<div class="card-action">
-						<div class=""><span class="blue-text">XP:</span> 28</div>
-						<div class=""><span class="blue-text">Rewards:</span> Teretorial control.</div>
+						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+						<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">28</span></div>
+						<div class=""><span class="blue-text text-darken-2">Rewards:</span> Teretorial control.</div>
 					</div>
 					<div class="card-reveal">
 						<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
@@ -416,14 +617,18 @@
 
 		<h3 id="workworklevel4" class="section scrollspy">Work-Work level 4: The Contributor</h3>
 
-			<div class="card blue-grey darken-1">
+			<div class="card blue-grey darken-1 quest" id="Contribute,-in-any-way,-to-any-of-the-Community-projects.-(Repeatable).">
 				<div class="card-content white-text">
 					<!-- <span class="card-title">Main Quest</span> -->
 					<span class="card-title activator "><i class="material-icons">stars</i> <i class="material-icons">repeat</i> Contribute, in any way, to any of the Community projects. (Repeatable).<i class="material-icons right">more_vert</i></span>
 					<p>TODO: Make description of all quests</p>
 				</div>
 				<div class="card-action">
-					<div class="white-text"><span class="yellow-text">XP:</span> 18</div>
+					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+					<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">18</span></div>
 					<div class="white-text"><span class="yellow-text">Rewards:</span> Bragging rights.</div>
 				</div>
 				<div class="card-reveal">
@@ -435,20 +640,24 @@
 			</div>
 
 			
-			<div class="card">
+			<div class="card quest" id="Initialize-a-Community-Project.">
 				<div class="card-content">
 					<span class="card-title activator "><i class="material-icons">turned_in</i> Initialize a Community Project.<i class="material-icons right">more_vert</i></span>
 					<p>TODO: Make description of all quests</p>
 					<h4>Sub Quests:</h4>
 
-					<div class="card">
+					<div class="card quest" id="Involve-another-person-in-the-project-(Repeatable).">
 						<div class="card-content">
 							<span class="card-title activator "><i class="material-icons">turned_in</i> <i class="material-icons">repeat</i> Involve another person in the project (Repeatable).<i class="material-icons right">more_vert</i></span>
 							<p>TODO: Make description of all quests</p>
 						</div>
 						<div class="card-action">
-							<div class=""><span class="blue-text">XP:</span> 21</div>
-							<div class=""><span class="blue-text">Rewards:</span> Larger workfroce.</div>
+							<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+							<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">21</span></div>
+							<div class=""><span class="blue-text text-darken-2">Rewards:</span> Larger workfroce.</div>
 						</div>
 						<div class="card-reveal">
 							<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
@@ -456,14 +665,18 @@
 						</div>
 					</div>
 
-					<div class="card">
+					<div class="card quest" id="Pitch-your-project-at-the-Community-Lunch.">
 						<div class="card-content">
 							<span class="card-title activator "><i class="material-icons">turned_in</i> Pitch your project at the Community Lunch.<i class="material-icons right">more_vert</i></span>
 							<p>TODO: Make description of all quests</p>
 						</div>
 						<div class="card-action">
-							<div class=""><span class="blue-text">XP:</span> 32</div>
-							<div class=""><span class="blue-text">Rewards:</span> Valuable feedback and new ideas..</div>
+							<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+							<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">32</span></div>
+							<div class=""><span class="blue-text text-darken-2">Rewards:</span> Valuable feedback and new ideas..</div>
 						</div>
 						<div class="card-reveal">
 							<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
@@ -474,8 +687,12 @@
 
 				</div>
 				<div class="card-action">
-					<div class=""><span class="blue-text">XP:</span> 87</div>
-					<div class=""><span class="blue-text">Rewards:</span> Massive bragging rights.</div>
+					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+					<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">87</span></div>
+					<div class=""><span class="blue-text text-darken-2">Rewards:</span> Massive bragging rights.</div>
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
@@ -484,14 +701,18 @@
 				</div>
 			</div>
 
-			<div class="card">
+			<div class="card quest" id="Recruit-a-new-Community-Member.-(Repeatable).">
 				<div class="card-content">
 					<span class="card-title activator "><i class="material-icons">turned_in</i> <i class="material-icons">repeat</i> Recruit a new Community Member. (Repeatable).<i class="material-icons right">more_vert</i></span>
 					<p>TODO: Make description of all quests</p>
 				</div>
 				<div class="card-action">
-					<div class=""><span class="blue-text">XP:</span> 79</div>
-					<div class=""><span class="blue-text">Rewards:</span> Free coffee for a month in the bar.</div>
+					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+					<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">79</span></div>
+					<div class=""><span class="blue-text text-darken-2">Rewards:</span> Free coffee for a month in the bar.</div>
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>
@@ -502,14 +723,18 @@
 
 
 			<h3 id="workworklevel5" class="section scrollspy">Work-Work level 5: The Legend</h3>
-			<div class="card blue-grey darken-1">
+			<div class="card blue-grey darken-1 quest" id="Host-an-event-which-is-relevant-for-people-in,-or-outside-of,-the-Community.-(Repeatable).">
 				<div class="card-content white-text">
 					<!-- <span class="card-title">Main Quest</span> -->
 					<span class="card-title activator "><i class="material-icons">stars</i> <i class="material-icons">repeat</i> Host an event which is relevant for people in, or outside of, the Community. (Repeatable).<i class="material-icons right">more_vert</i></span>
 					<p>TODO: Make description of all quests</p>
 				</div>
 				<div class="card-action">
-					<div class="white-text"><span class="yellow-text">XP:</span> 74</div>
+					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+					<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">74</span></div>
 					<div class="white-text"><span class="yellow-text">Rewards:</span> Deeper understanding of your topic + Bragging rights.</div>
 				</div>
 				<div class="card-reveal">
@@ -519,14 +744,18 @@
 				</div>
 			</div>
 
-			<div class="card blue-grey darken-1">
+			<div class="card blue-grey darken-1 quest" id="Release-a-successful-game-or-product.-(Repeatable).">
 				<div class="card-content white-text">
 					<!-- <span class="card-title">Main Quest</span> -->
 					<span class="card-title activator "><i class="material-icons">stars</i> <i class="material-icons">repeat</i> Release a successful game or product. (Repeatable).<i class="material-icons right">more_vert</i></span>
 					<p>TODO: Make description of all quests</p>
 				</div>
 				<div class="card-action">
-					<div class="white-text"><span class="yellow-text">XP:</span> 350</div>
+					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+					<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">350</span></div>
 					<div class="white-text"><span class="yellow-text">Rewards:</span> A space in the "Work-Work projects wall". (TBA).</div>
 				</div>
 				<div class="card-reveal">
@@ -535,14 +764,18 @@
 				</div>
 			</div>
 
-			<div class="card blue-grey darken-1">
+			<div class="card blue-grey darken-1 quest" id="Grow-your-business-so-much-that-you-need-to-move-out-of-Work-Work.">
 				<div class="card-content white-text">
 					<!-- <span class="card-title">Main Quest</span> -->
 					<span class="card-title activator "><i class="material-icons">stars</i> Grow your business so much that you need to move out of Work-Work.<i class="material-icons right">more_vert</i></span>
 					<p>TODO: Make description of all quests</p>
 				</div>
 				<div class="card-action">
-					<div class="white-text"><span class="yellow-text">XP:</span> 2800</div>
+					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+					<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">2800</span></div>
 					<div class="white-text"><span class="yellow-text">Rewards:</span> Eternal bragging rights + A space in the Hall Of Fame at Work-Work. First to complete this quest will get the honor of opening the Hall of Fame. + Cake.</div>
 				</div>
 				<div class="card-reveal">
@@ -553,14 +786,18 @@
 			</div>
 
 
-			<div class="card">
+			<div class="card quest" id="Make-something-usefull-out-of-a-Pallet.-(Repeatable).">
 				<div class="card-content">
 					<span class="card-title activator "><i class="material-icons">turned_in</i> <i class="material-icons">repeat</i> Make something usefull out of a Pallet. (Repeatable).<i class="material-icons right">more_vert</i></span>
 					<p>TODO: Make description of all quests</p>
 				</div>
 				<div class="card-action">
-					<div class=""><span class="blue-text">XP:</span> 50</div>
-					<div class=""><span class="blue-text">Rewards:</span> Bragging rights + A usefull object made from pallets.</div>
+					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+					</button>
+					<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">50</span></div>
+					<div class=""><span class="blue-text text-darken-2">Rewards:</span> Bragging rights + A usefull object made from pallets.</div>
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Quest Tips<i class="material-icons right">close</i></span>

@@ -62,8 +62,9 @@ Work-Work, the Game!(TM)
 
 		Marius: The guy with the long beard.
 		Sverre: The guy with the wide beard.
-		Stephan: The guy with the long hear.
-		Mystery Man: The guy with the wide hear.
+		Stephan: The guy with the long hair.
+		Mystery Man: The guy with the wide hair.
+		The Community: Any one, excluding yourself, of people currently inhabiting the co-working space.
 
 	Work-Work level 1: Your First Day
 
@@ -99,6 +100,11 @@ Work-Work, the Game!(TM)
 					- Ask on slack, or MSS, for help.
 			XP: 13
 
+		Main Quest: Enter Work-Work through the secret back entrance.
+			Reward: Fully functioning Key.
+			Tips: This door works as a key-updater, and you must enter through it once per week to keep your key working correctly.
+			XP: 18
+
 		Side Quest: Join the Facebook group
 			Reward: Another Communication platform where MSS announce events.
 			Tips: Ask MMS to invite you.
@@ -108,6 +114,21 @@ Work-Work, the Game!(TM)
 			Reward: A place to put your loot
 			Tips: There are plenty of free storage containers around. If they are empty and un-marked, they are up for grabs.
 			XP: 5
+
+		Side Quest: Explore the Micro-Kitchen
+			Reward: Ability to re-heat food, boil water, refrigerate stuff and brew coffe.
+			Tips: Talk to one of the NPCs for help.
+			XP: 11
+
+		Side Quest: Explore the secret underworld.
+			Reward: A place to park your bike. A place to change and store clothes and shower.
+			Tips: You can use the warp-pipe to get there.
+			XP: 9
+
+		Side Quest: Locate the Waste Disposial System, and learn to operate the cellulose condenser.
+			Reward: Ability to dispose of waste.
+			Tips: Talk to MSS for operational instructions for the cellulose condenser.
+			XP: 23
 
 	Work-Work level 3: The Intricacies
 		Main Quest: Join, and introduce yourself at, the Community Lunch, Fridays at 11:00.
@@ -202,6 +223,12 @@ Stuff they do/must learn:
 		X Contribute to a community project
 		X Read the house rules
 		X Pallets is the shit
+		X kjøkken
+		X garderober
+		X søppelrom
+	
+
+
 
 
 
