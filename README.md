@@ -1,6 +1,6 @@
 # Work-Work Handbook
 
-![Untangle](/www/Work-Work Handbook.jpg?raw=true)
+![Work-Work Handbook](/www/Work-Work Handbook.jpg?raw=true)
 
 
 # Serving this as a website:
