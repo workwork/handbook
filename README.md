@@ -11,4 +11,7 @@
 
 Now go to `dockerip:8080`, and have a look at the handbook.
 
+## Current live instance
+
+The website is currently hosted at [http://188.226.202.86:8080/](http://188.226.202.86:8080/).
 
