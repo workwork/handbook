@@ -61,11 +61,15 @@ Work-Work, the Game!(TM)
 		MMS: Any one of Marius, Sverre, and Stephan.
 
 		Marius: The guy with the long beard.
+			- Phone: 932 58 279
 		Sverre: The guy with the wide beard.
+			- Phone: 900 91 209
 		Stephan: The guy with the long hair.
+			- Phone: 952 07 639
 		Mystery Man: The guy with the wide hair.
 		The Community: Any one, excluding yourself, of people currently inhabiting the co-working space.
 		The Bar Crew: Anyone working in the bar at Work-Work.
+			- Phone: 926 51 268
 
 	Work-Work level 1: Your First Day
 

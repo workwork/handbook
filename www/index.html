@@ -19,6 +19,9 @@
 		.npc{
 			font-weight: bold;
 		}
+		span.phone{
+			font-weight: bold;
+		}
 		img#cover{
 			margin: 0;
 			padding: 0;
@@ -42,18 +45,24 @@
 		}
 
 		.quest > .card-action button.complete span.post,
+		.quest > .card-action button.repeatOne span.post,
+		.quest > .card-action button.undoRepeatOne,
 		.quest .card-action button.completeEXAMPLE span.post{
 			display: none;
 		}
 		.quest.questDone > .card-action button.complete span.pre,
+		.quest.questDone > .card-action button.repeatOne span.pre,
 		.quest.questDoneEXAMPLE .card-action button.completeEXAMPLE span.pre{
 			display: none;
 		}
 		.quest.questDone > .card-action button.complete span.post,
+		.quest.questDone > .card-action button.undoRepeatOne,
+		.quest.questDone > .card-action button.repeatOne span.post,
 		.quest.questDoneEXAMPLE .card-action button.completeEXAMPLE span.post{
 			display: inherit;
 		}
 		.quest.questDone > .card-action button.complete,
+		.quest.questDone > .card-action button.undoRepeatOne,
 		.quest.questDoneEXAMPLE .card-action button.completeEXAMPLE{
 			background-color: #d32f2f;
 		}
@@ -77,10 +86,14 @@
 			$(".questDone").removeClass("questDone");
 
 			window.totalXP = 0;
+			window.totalWWSC = 0;
 			window.quests.map(function (quest) {
-				$("#"+quest.name).addClass("questDone")
-				window.totalXP = window.totalXP + quest.xp;
-				window.totalWWSC = window.totalWWSC + quest.wwsc;
+				var currentQuest = $("#"+quest.name);
+				currentQuest.addClass("questDone");
+				currentQuest.find(".repeatCounter").html(quest.repeated);
+				
+				window.totalXP = window.totalXP + (quest.xp * quest.repeated);
+				window.totalWWSC = window.totalWWSC + (quest.wwsc * quest.repeated);
 			});
 
 			$("#xpbar").html(window.totalXP);
@@ -99,10 +112,50 @@
 			}
 
 		}
-		function completedQuest(questName, xp, wwsc) {
-			window.quests.push({name: questName, xp: xp || 0, wwsc: wwsc || 0})
+		
+		function repeatQuest(questName, xp, wwsc) {
+			var found = false;
+			window.quests.forEach(function(item, i) { 
+				if(item.name == questName){
+					item.repeated = item.repeated + 1;
+					window.quests[i] = item;
+					found = true;
+				}
+			});
+
+			if(!found){
+				window.quests.push({name: questName, xp: xp || 0, wwsc: wwsc || 0, repeated: 1})
+			}
+
+			updateView();	
+		}
+
+		function undoRepeatQuest(questName) {
+			var found = false;
+			var deleteQuest = false;
+			window.quests.forEach(function(item, i) { 
+				console.log(item);
+				console.log(i);
+				if(item.name == questName){
+					item.repeated = item.repeated - 1;
+					if(item.repeated <= 0){
+						deleteQuest = i+1;//+1 to prevent if(0){} which is enterpreted a false
+					}
+					window.quests[i] = item;
+					found = true;
+				}
+			});
+			if(deleteQuest){
+				window.quests.splice(deleteQuest-1, 1);
+			}
 			updateView();
 		}
+
+		function completedQuest(questName, xp, wwsc) {
+			window.quests.push({name: questName, xp: xp || 0, wwsc: wwsc || 0, repeated: 1})
+			updateView();
+		}
+
 		function undoQuest(questName) {
 			newQuests = window.quests.filter(function (element) {
 				return element.name !== questName;
@@ -113,25 +166,50 @@
 			updateView();
 			save();
 		}
+
+		function questButtonpressed(completeButton, undoing, repeater) {
+			var questName = completeButton.parent().parent().attr('id');
+			var questXp = parseInt(completeButton.parent().find("span.xp").html());
+			var questWWSC = 0;
+			console.log(completeButton.parent().find("span.wwsc"))
+			window.TESTELEMENT = completeButton;
+			if(completeButton.parent().find("span.wwsc")){
+				questWWSC = parseInt(completeButton.parent().find("span.wwsc").html());
+				console.log("questWWSC");
+				console.log(questWWSC);
+			}
+			
+			if(repeater){
+				if(undoing){
+					undoRepeatQuest(questName);
+				} else {
+					repeatQuest(questName, questXp, questWWSC);
+				}
+			} else {
+				if(undoing){
+					undoQuest(questName);
+				} else {
+					completedQuest(questName, questXp, questWWSC);
+				}
+			}
+
+			updateView();
+			save();
+		}
 		function InitializeGame() {
 			//The quests that are done.
 			window.quests = JSON.parse( localStorage.getItem("quests") ) || [];
 
 
 			$("button.complete").click(function () {
-				completeButton = $(this)
-				
-				var questName = completeButton.parent().parent().attr('id');
-				var questXp = parseInt(completeButton.parent().find("span.xp").html());
-					
-				if(completeButton.parent().parent().hasClass("questDone")){
-					undoQuest(questName);
-				} else {
-					completedQuest(questName, questXp);
-				}
+				questButtonpressed($(this), $(this).parent().parent().hasClass("questDone"), false);
+			});
 
-				updateView();
-				save();
+			$("button.repeatOne").click(function () {
+				questButtonpressed($(this), false, true);
+			});
+			$("button.undoRepeatOne").click(function () {
+				questButtonpressed($(this), true, true)
 			});
 
 			updateView();
@@ -393,11 +471,13 @@
 				<h3>NPCs:</h3>
 				<ul>
 					<li><span class="npc">MMS</span>: Any one of Marius, Sverre, and Stephan.</li>
-					<li><span class="npc">Marius</span>: The guy with the long beard.</li>
-					<li><span class="npc">Sverre</span>: The guy with the wide beard.</li>
-					<li><span class="npc">Stephan</span>: The guy with the long hair.</li>
+					<li><span class="npc">Marius</span>: The guy with the long beard. <span class="phone">Phone: <a href="tel:004793258279">932 58 279</a></span></span></li>
+					<li><span class="npc">Sverre</span>: The guy with the wide beard. <span class="phone">Phone: <a href="tel:004790091209">900 91 209</a></span></span></li>
+					<li><span class="npc">Stephan</span>: The guy with the long hair. <span class="phone">Phone: <a href="tel:004795207639">952 07 639</a></span></li>
 					<li><span class="npc">Mystery Man</span>: The guy with the wide hair.</li>
 					<li><span class="npc">The Community</span>: Any one, excluding yourself, of people currently inhabiting the co-working space.</li>
+					<li><span class="npc">The Bar Crew</span>: Anyone working in the bar at Work-Work. <span class="phone">Phone: <a href="tel:004792651268">926 51 268</a></span></li>
+					
 				</ul>
 				
 				
@@ -415,9 +495,9 @@
 						</div>
 						<div class="card-action">
 							<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+								<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+								<span class="post" >Undo <i class="material-icons right">delete</i></span>
+							</button>
 							<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">35</span></div>
 							<div class="white-text"><span class="yellow-text">Rewards:</span> Knowledge of where things are located at Work-Work.</div>
 						</div>
@@ -435,9 +515,9 @@
 						</div>
 						<div class="card-action">
 							<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+								<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+								<span class="post" >Undo <i class="material-icons right">delete</i></span>
+							</button>
 							<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">40</span></div>
 							<div class="white-text"><span class="yellow-text">Rewards:</span> A place to sit and work.</div>
 						</div>
@@ -454,9 +534,9 @@
 						</div>
 						<div class="card-action">
 							<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+								<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+								<span class="post" >Undo <i class="material-icons right">delete</i></span>
+							</button>
 							<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">10</span></div>
 							<div class=""><span class="blue-text text-darken-2">Rewards:</span> Infinite wisdom and enterntainment. Increased productivity.</div>
 						</div>
@@ -479,9 +559,9 @@
 					</div>
 					<div class="card-action">
 						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						</button>
 						<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">50</span></div>
 						<div class="white-text"><span class="yellow-text">Rewards:</span> Understaing of jungle-rules of Work-Work.</div>
 					</div>
@@ -499,9 +579,9 @@
 					</div>
 					<div class="card-action">
 						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						</button>
 						<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">17</span></div>
 						<div class="white-text"><span class="yellow-text">Rewards:</span> Communication platform to instantly communicate with anyone in the Work-Work community.</div>
 					</div>
@@ -519,9 +599,9 @@
 					</div>
 					<div class="card-action">
 						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						</button>
 						<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">13</span></div>
 						<div class="white-text"><span class="yellow-text">Rewards:</span> Ability to host meetings.</div>
 					</div>
@@ -540,9 +620,9 @@
 					</div>
 					<div class="card-action">
 						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						</button>
 						<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">18</span></div>
 						<div class="white-text"><span class="yellow-text">Rewards:</span> Fully functioning Key.</div>
 					</div>
@@ -560,9 +640,9 @@
 					</div>
 					<div class="card-action">
 						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						</button>
 						<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">12</span></div>
 						<div class=""><span class="blue-text text-darken-2">Rewards:</span> Another Communication platform where MSS announce events.</div>
 					</div>
@@ -579,9 +659,9 @@
 					</div>
 					<div class="card-action">
 						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						</button>
 						<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">5</span></div>
 						<div class=""><span class="blue-text text-darken-2">Rewards:</span> A place to put your loot.</div>
 					</div>
@@ -598,9 +678,9 @@
 					</div>
 					<div class="card-action">
 						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						</button>
 						<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">11</span></div>
 						<div class=""><span class="blue-text text-darken-2">Rewards:</span> Ability to re-heat food, boil water, refrigerate stuff and brew coffe.</div>
 					</div>
@@ -618,9 +698,9 @@
 					</div>
 					<div class="card-action">
 						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						</button>
 						<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">9</span></div>
 						<div class=""><span class="blue-text text-darken-2">Rewards:</span> A place to park your bike. A place to change and store clothes and shower.</div>
 					</div>
@@ -637,9 +717,9 @@
 					</div>
 					<div class="card-action">
 						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						</button>
 						<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">23</span></div>
 						<div class=""><span class="blue-text text-darken-2">Rewards:</span> Ability to dispose of waste.</div>
 					</div>
@@ -656,10 +736,17 @@
 						<p>From time to time it can happen that a restroom lacks one of the necessities. When you detect this, it is the perfect time to test out slack or the facebook group to notify MSS about the anomaly. </p>
 					</div>
 					<div class="card-action">
-						<button class="complete btn waves-effect waves-light right" type="submit" name="action">
-						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
-					</button>
+						<!-- <button class="complete btn waves-effect waves-light right" type="submit" name="action">
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						</button> -->
+						<button class="repeatOne btn waves-effect waves-light right" type="submit" name="action">
+							<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
+							<span class="post" >Complete Another <i class="material-icons right">done</i></span>
+						</button>
+						<button class="undoRepeatOne btn waves-effect waves-light right" type="submit" name="action">
+							<span class="post" >Undo One of <span class="repeatCounter"></span> <i class="material-icons right">delete</i></span>
+						</button>
 						<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">15</span></div>
 						<div class=""><span class="blue-text text-darken-2">Rewards:</span> Toilet paper, drying paper or soap + a big thanks and a pat on the back.</div>
 					</div>
@@ -767,6 +854,7 @@
 						<span class="post" >Undo <i class="material-icons right">delete</i></span>
 					</button>
 						<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">28</span></div>
+						<div class=""><span class="blue-text text-darken-2">Street creds(WWSC):</span> <span class="wwsc">1</span></div>
 						<div class=""><span class="blue-text text-darken-2">Rewards:</span> Teretorial control.</div>
 					</div>
 					<div class="card-reveal">
@@ -785,11 +873,15 @@
 					<p>Work-Work has a github page which contain most/all ongoing community projects (including this handbook!). MSS want The Community to shine, so having inspiring, awesome projects created by The Community, for The Community, is one of the best ways to improve The Community's position.</p>
 				</div>
 				<div class="card-action">
-					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+					<button class="repeatOne btn waves-effect waves-light right" type="submit" name="action">
 						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						<span class="post" >Complete Another <i class="material-icons right">done</i></span>
+					</button>
+					<button class="undoRepeatOne btn waves-effect waves-light right" type="submit" name="action">
+						<span class="post" >Undo One of <span class="repeatCounter"></span> <i class="material-icons right">delete</i></span>
 					</button>
 					<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">18</span></div>
+					<div class=""><span class="blue-text text-darken-2">Street creds(WWSC):</span> <span class="wwsc">4</span></div>
 					<div class="white-text"><span class="yellow-text">Rewards:</span> Bragging rights.</div>
 				</div>
 				<div class="card-reveal">
@@ -813,9 +905,12 @@
 							<p>Without the help from other people, it becomes hard to create something great. Gather more people and create a large Work-Work force.</p>
 						</div>
 						<div class="card-action">
-							<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+							<button class="repeatOne btn waves-effect waves-light right" type="submit" name="action">
 								<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-								<span class="post" >Undo <i class="material-icons right">delete</i></span>
+								<span class="post" >Complete Another <i class="material-icons right">done</i></span>
+							</button>
+							<button class="undoRepeatOne btn waves-effect waves-light right" type="submit" name="action">
+								<span class="post" >Undo One of <span class="repeatCounter"></span> <i class="material-icons right">delete</i></span>
 							</button>
 							<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">21</span></div>
 							<div class=""><span class="blue-text text-darken-2">Rewards:</span> Larger workfroce.</div>
@@ -853,6 +948,7 @@
 						<span class="post" >Undo <i class="material-icons right">delete</i></span>
 					</button>
 					<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">87</span></div>
+					<div class=""><span class="blue-text text-darken-2">Street creds(WWSC):</span> <span class="wwsc">10</span></div>
 					<div class=""><span class="blue-text text-darken-2">Rewards:</span> Massive bragging rights.</div>
 				</div>
 				<div class="card-reveal">
@@ -868,11 +964,15 @@
 					<p>Not everyone what might want to work at Work-Work has been informed of what Work-Work has to offer. By introducing the person to Work-Work you might be showing the person the way and enriching The Community with a new member!</p>
 				</div>
 				<div class="card-action">
-					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+					<button class="repeatOne btn waves-effect waves-light right" type="submit" name="action">
 						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						<span class="post" >Complete Another <i class="material-icons right">done</i></span>
+					</button>
+					<button class="undoRepeatOne btn waves-effect waves-light right" type="submit" name="action">
+						<span class="post" >Undo One of <span class="repeatCounter"></span> <i class="material-icons right">delete</i></span>
 					</button>
 					<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">79</span></div>
+					<div class=""><span class="blue-text text-darken-2">Street creds(WWSC):</span> <span class="wwsc">4</span></div>
 					<div class=""><span class="blue-text text-darken-2">Rewards:</span> Free coffee for a month in the bar.</div>
 				</div>
 				<div class="card-reveal">
@@ -884,6 +984,8 @@
 
 
 			<h3 id="workworklevel5" class="section scrollspy">Work-Work level 5: The Legend</h3>
+
+
 			<div class="card blue-grey darken-1 quest" id="Host-an-event-which-is-relevant-for-people-in-or-outside-of-the-Community-Repeatable">
 				<div class="card-content white-text">
 					<!-- <span class="card-title">Main Quest</span> -->
@@ -891,11 +993,15 @@
 					<p>Events don't host themselves. They require dedicated, skilled, people. You are the right person to do so, and now it is time for you to show the way, enright the knowledge of others and inspire the next generation.</p>
 				</div>
 				<div class="card-action">
-					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+					<button class="repeatOne btn waves-effect waves-light right" type="submit" name="action">
 						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						<span class="post" >Complete Another <i class="material-icons right">done</i></span>
+					</button>
+					<button class="undoRepeatOne btn waves-effect waves-light right" type="submit" name="action">
+						<span class="post" >Undo One of <span class="repeatCounter"></span> <i class="material-icons right">delete</i></span>
 					</button>
 					<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">74</span></div>
+					<div class=""><span class="blue-text text-darken-2">Street creds(WWSC):</span> <span class="wwsc">11</span></div>
 					<div class="white-text"><span class="yellow-text">Rewards:</span> Deeper understanding of your topic + Bragging rights.</div>
 				</div>
 				<div class="card-reveal">
@@ -912,11 +1018,15 @@
 					<p>You have worked hard for a long time, and now the time is is finally here. Time to release. All beta testing is done, the product is tweaked, you feel ready. What remains is testing the product on real customers, in the real world!</p>
 				</div>
 				<div class="card-action">
-					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+					<button class="repeatOne btn waves-effect waves-light right" type="submit" name="action">
 						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						<span class="post" >Complete Another <i class="material-icons right">done</i></span>
+					</button>
+					<button class="undoRepeatOne btn waves-effect waves-light right" type="submit" name="action">
+						<span class="post" >Undo One of <span class="repeatCounter"></span> <i class="material-icons right">delete</i></span>
 					</button>
 					<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">350</span></div>
+					<div class=""><span class="blue-text text-darken-2">Street creds(WWSC):</span> <span class="wwsc">34</span></div>
 					<div class="white-text"><span class="yellow-text">Rewards:</span> A space in the "Work-Work projects wall". (TBA).</div>
 				</div>
 				<div class="card-reveal">
@@ -937,6 +1047,7 @@
 						<span class="post" >Undo <i class="material-icons right">delete</i></span>
 					</button>
 					<div class="white-text"><span class="yellow-text">XP:</span> <span class="xp">2800</span></div>
+					<div class=""><span class="blue-text text-darken-2">Street creds(WWSC):</span> <span class="wwsc">365</span></div>
 					<div class="white-text"><span class="yellow-text">Rewards:</span> Eternal bragging rights + A space in the Hall Of Fame at Work-Work. First to complete this quest will get the honor of opening the Hall of Fame. + Cake.</div>
 				</div>
 				<div class="card-reveal">
@@ -953,11 +1064,15 @@
 					<p>You have realised the power of The Pallet. You see now why everything in the bar is made from this marvelous material, and you want to embark on a Pallet adventure on your own, to make that thing you always wanted.</p>
 				</div>
 				<div class="card-action">
-					<button class="complete btn waves-effect waves-light right" type="submit" name="action">
+					<button class="repeatOne btn waves-effect waves-light right" type="submit" name="action">
 						<span class="pre" >Complete Quest <i class="material-icons right">done</i></span>
-						<span class="post" >Undo <i class="material-icons right">delete</i></span>
+						<span class="post" >Complete Another <i class="material-icons right">done</i></span>
+					</button>
+					<button class="undoRepeatOne btn waves-effect waves-light right" type="submit" name="action">
+						<span class="post" >Undo One of <span class="repeatCounter"></span> <i class="material-icons right">delete</i></span>
 					</button>
 					<div class=""><span class="blue-text text-darken-2">XP:</span> <span class="xp">50</span></div>
+					<div class=""><span class="blue-text text-darken-2">Street creds(WWSC):</span> <span class="wwsc">17</span></div>
 					<div class=""><span class="blue-text text-darken-2">Rewards:</span> Bragging rights + A usefull object made from pallets.</div>
 				</div>
 				<div class="card-reveal">
