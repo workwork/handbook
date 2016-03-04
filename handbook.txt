@@ -1,7 +1,7 @@
 Introduction:
 
 
-	This book is meant as a guideline for every member of the Work-Work community. It contains usefull information as well as rules for the co-working space.
+	This book is meant as a guideline for every member of the Work-Work community. It contains useful information as well as rules for the co-working space.
 
 	Every new member of the Work-Work community is required to read the house rules, and is encouraged to read the whole handbook. If you have any questions, please contact one of the hosts.
 
@@ -17,29 +17,29 @@ House Rules:
 	You must:
 		-Obey the "must" and "can't" part of these rules.
 		-Clean up after yourself.
-		-Tur of the light, and turn the alarm on, if you are the last person to leave the house.
-		-read, and be familiar with the HMS-instructions. They are on the walls on every floor.
-		-know what is part of the "skjenkeareale", and what is not.
-		-know the fire instructions.
+		-Turn of the light, and turn the alarm on, if you are the last person to leave the house.
+		-Read, and be familiar with the HMS-instructions. They are on the walls on every floor.
+		-Know what is part of the "skjenkeareale", and what is not.
+		-Know the fire instructions.
 		-Respect other peoples private properties. Do not borrow other peoples equipment without their permission. Also don't steal and kill and follow Norwegian law.
-		-announce what material is under NDA, if any, prior to showing it to others.
+		-Announce what material is under NDA, if any, prior to showing it to others.
 	You should:
 		-Follow the "should" and "shouldn't" part of these rules.
-		-involve yourself in others work. 
-		-help others that ask for help.
+		-Involve yourself in others work. 
+		-Help others that ask for help.
 		-Give constructive feedback, both positive and negative. Also say what you think, don't be afraid to say things like "I think this part could be better". 
-		-talk to people you don't know. Get to know everyone in the community!
-		-actively contribute in the "pay it forward" culture. 
-		-show other people what you are working on. 
-		-be inclusive of people from "the outside". Feel free to invite them in and show them around.
-		-use the bar as a prototyping platform. It is your la-BAR-atory. Ask many people, accelerate your development.
+		-Talk to people you don't know. Get to know everyone in the community!
+		-Actively contribute in the "pay it forward" culture. 
+		-Show other people what you are working on. 
+		-Be inclusive of people from "the outside". Feel free to invite them in and show them around.
+		-Use the bar as a prototyping platform. It is your la-BAR-atory. Ask many people, accelerate your development.
 	You should not:
 		-Break the "should" and "shouldn't" part of these rules.
-		-disturb others when they are working.
-		-let food and other thrash lay around to rot.
-		-talk negatively to or about other people.
-		-hide your ideas. By exposing them to other people the ideas grow and become better.
-		-have material under NDA
+		-Disturb others when they are working.
+		-Let food and other thrash lay around to rot.
+		-Talk negatively to or about other people.
+		-Hide your ideas. By exposing them to other people the ideas grow and become better.
+		-Have material under NDA
 	You can not:
 		-Break the "must" or "can't" part of these rules.
 		-Access the bar area outside of the opening hours of the bar. 
@@ -53,12 +53,12 @@ House Rules:
 Work-Work, the Game!(TM)
 	
 	Tutorial
-		You are new at Work-Work, welcome! This is your first day here. You have signed the contract and hopefully gotten your key. You might be feeling cheerful, or even a bit confused or scared. "What should I do?", "How does stuff work here?", "Who are all these people?" and "Who is Marius, Sverre and Stephan(MSS)?". All of these are questions you might have. "Work-Work, the Game!"(TM) is a text-only game that will guilde you through your first day, week or even year at Work-Work, and help you find the answers to all of your questions!
+		You are new at Work-Work, welcome! This is your first day here. You have signed the contract and hopefully gotten your key. You might be feeling cheerful, or even a bit confused or scared. "What should I do?", "How does stuff work here?", "Who are all these people?" and "Who is Marius, Sverre and Stephan(MSS)?". All of these are questions you might have. "Work-Work, the Game!"(TM) is a text-only game that will guide you through your first day, week or even year at Work-Work, and help you find the answers to all of your questions!
 
-		The game is divided into levels. Each level has some quests. Some of them are main quests (manditory), others are side quests (non-manditory). To proceeded to the next level, you must complete all the main quests from your current level.
+		The game is divided into levels. Each level has some quests. Some of them are main quests (mandatory), others are side quests (non-mandatory). To proceeded to the next level, you must complete all the main quests from your current level.
 
 	NPCs:
-		MMS: Any one of Marius, Sverre, and Stephan.
+		MSS: Any one of Marius, Sverre, and Stephan.
 
 		Marius: The guy with the long beard.
 			- Phone: 932 58 279
@@ -74,7 +74,7 @@ Work-Work, the Game!(TM)
 	Work-Work level 1: Your First Day
 
 		Main Quest: Get to see the entire house.
-			Description: The Work-Work house has many secrets. Knowing your whereabouts in this wast jungle of rooms will help you in your day to day rutine, as well as for those special days you need to find something.
+			Description: The Work-Work house has many secrets. Knowing your whereabouts in this wast jungle of rooms will help you in your day to day routine, as well as for those special days you need to find something.
 			Reward: Knowledge of where things are located at Work-Work.
 			Tips: Talk to MSS and ask for a guided tour.
 			XP: 35
@@ -87,14 +87,14 @@ Work-Work, the Game!(TM)
 
 		Side Quest: Connect to the Work-Work WiFi
 			Description: Wireless Fidelity is one of the marvels of modern society. It is nothing short of magic. And at Work-Work we have 1 Gigabit worth of magic per second provided by ITsjefen
-			Reward: Infinite wisdom and enterntainment. Increased productivity.
+			Reward: Infinite wisdom and entertainment. Increased productivity.
 			Tips: There are no password.
 			XP: 10
 
 	Work-Work level 2: The Basics
 		Main Quest: Read the Work-Work House Rules
 			Description: To achieve eudaimonia, certain rules are needed. At Work-Work these are the "House Rules".	
-			Reward: Understaing of jungle-rules of Work-Work
+			Reward: Understanding of the jungle-rules of Work-Work
 			Tips: The rules can be found in this here handbook.
 			XP: 50
 
@@ -105,21 +105,21 @@ Work-Work, the Game!(TM)
 			XP: 17
 
 		Main Quest: Learn how to book a meeting room
-			Description: Meetings can be an important part of modern work-life, but also the greates time thief. Use it wisely.
+			Description: Meetings can be an important part of modern work-life, but also the greatest time thief. Use it wisely.
 			Reward: Ability to host meetings
 			Tips:	- Go to work-work.no/booking
 					- Ask on slack, or MSS, for help.
 			XP: 13
 
 		Main Quest: Enter Work-Work through the secret back entrance.
-			Description: Every secret lair has a secret entrance. The back entrance at Work-Work acts as a VIP entrance as well as a key-updater. Make sure to enter through this entrance about once per week to keep your card working corretly.
+			Description: Every secret lair has a secret entrance. The back entrance at Work-Work acts as a VIP entrance as well as a key-updater. Make sure to enter through this entrance about once per week to keep your card working correctly.
 			Reward: Fully functioning Key.
 			Tips:	- This is a great place to bring your bike in.
 					- This entrance is good for those who want to avoid the crowded bar area
 			XP: 18
 
 		Side Quest: Join the Facebook group
-			Description: Since so many are already on Facebook, we post events and other usefull information here as well as on slack.
+			Description: Since so many are already on Facebook, we post events and other useful information here as well as on slack.
 			Reward: Another Communication platform where MSS announce events.
 			Tips: Ask MMS to invite you.
 			XP: 12
@@ -127,12 +127,12 @@ Work-Work, the Game!(TM)
 		Side Quest: Claim storage space
 			Description: When you have things, and you don't have space on your desk, it is nice to have a place to put it.
 			Reward: A place to put your loot.
-			Tips: There are plenty of free storage containers around. If they are empty and un-marked, they are up for grabs.
+			Tips: There are plenty of free storage containers around. If they are empty and unmarked, they are up for grabs.
 			XP: 5
 
 		Side Quest: Explore the Micro-Kitchen
 			Description: When the thirst for coffee and hunger for food becomes too much, this is the place for you. But please, don't use too many of the machine at once, or the fuses will blow.
-			Reward: Ability to re-heat food, boil water, refrigerate stuff and brew coffe.
+			Reward: Ability to re-heat food, boil water, refrigerate stuff and brew coffee.
 			Tips: Talk to one of the NPCs for help.
 			XP: 11
 
@@ -142,21 +142,21 @@ Work-Work, the Game!(TM)
 			Tips: You can use the warp-pipe to get there.
 			XP: 9
 
-		Side Quest: Locate the Waste Disposial System, and learn to operate the cellulose condenser.
-			Description: If you have larger items you with to dispose of, then this is the place to go. The Waste Disposal System can deal with glass, cellulose bi-products (such as cardboard and paper) and "general waste". If you see a particulary large 
+		Side Quest: Locate the Waste Disposal System, and learn to operate the cellulose condenser.
+			Description: If you have larger items you with to dispose of, then this is the place to go. The Waste Disposal System can deal with glass, cellulose bi-products (such as cardboard and paper) and "general waste". If you see a particular full trash bucket, you can even take the trash to this area and dispose of it! 
 			Reward: Ability to dispose of waste.
 			Tips: Talk to MSS for operational instructions for the cellulose condenser. 
 			XP: 23
 
 		Side Quest: Notify MSS about missing toilet paper, drying paper or soap in a restroom.
-			Description: From time to time it can happen that a restroom lacks one of the necessities. When you detect this, it is the perfect time to test out slack or the facebook group to notify MSS about the anomaly. 
+			Description: From time to time it can happen that a restroom lacks one of the necessities. When you detect this, it is the perfect time to test out slack or the Facebook group to notify MSS about the anomaly. 
 			Reward: Toilet paper, drying paper or soap + a big thanks and a pat on the back.
 			Tips: You can use Slack or Facebook to notify MSS or The Bar Crew.
 			XP: 15
 
 	Work-Work level 3: The Intricacies
 		Main Quest: Join, and introduce yourself at, the Community Lunch
-			Description: The Work-Work Community Lunch is hosted every friday at 11:00. From time to time we invite external people as well.
+			Description: The Work-Work Community Lunch is hosted every Friday at 11:00. From time to time we invite external people as well.
 			Reward: 2d6 Friends
 			Tips: Give your name and talk about what you do for work.
 			XP: 20
@@ -183,7 +183,7 @@ Work-Work, the Game!(TM)
 
 		Side Quest: Hang something on the wall
 			Description: The walls at Work-Work is up for grabs. If there is a blank space, it is a free space. It is like the wild west. First to settle owns that. MSS reserves the right to act as an oligarchy and ask politely to move something if the space must be used for a greater good.
-			Reward: Teretorial control + 1 Street Cred
+			Reward: Territorial control + 1 Street Cred
 			Tips:	- Ask MSS before screwing large object/constructions to the wall.
 					- Feel free to hang up nails for picture-frames etc.
 			XP: 28
@@ -206,8 +206,8 @@ Work-Work, the Game!(TM)
 			Sub Quests:
 				Involve another person in the project (Repeatable)
 					Description: Without the help from other people, it becomes hard to create something great. Gather more people and create a large Work-Work force.
-					Reward: Larger workfroce
-					Tips: Talk to pepole on slack and in real life.
+					Reward: Larger workforce
+					Tips: Talk to people on slack and in real life.
 					XP: 21
 				Pitch your project at the Community Lunch
 					Description: The Community Lunch is a great place to show off what you are working on, and a great place to find people to join in on your marvelous project!
@@ -224,7 +224,7 @@ Work-Work, the Game!(TM)
 
 	Work-Work level 5: The Legend
 		Main Quest: Host an event which is relevant for people in, or outside of, the Community.
-			Description: Events don't host themselves. They require dedicated, skilled, people. You are the right person to do so, and now it is time for you to show the way, enright the knowledge of others and inspire the next generation.
+			Description: Events don't host themselves. They require dedicated, skilled, people. You are the right person to do so, and now it is time for you to show the way, enrich the knowledge of others and inspire the next generation.
 			Reward: - Bragging rights.
 					- Deeper understanding of your topic.
 					- 11 Street Creds
@@ -248,10 +248,10 @@ Work-Work, the Game!(TM)
 					- Make a lot of money.
 			XP: 2800
 
-		Side Quest: Make something usefull out of a Pallet
-			Description: You have realised the power of The Pallet. You see now why everything in the bar is made from this marvelous material, and you want to embark on a Pallet adventure on your own, to make that thing you always wanted.
+		Side Quest: Make something useful out of a Pallet
+			Description: You have released the power of The Pallet. You see now why everything in the bar is made from this marvelous material, and you want to embark on a Pallet adventure on your own, to make that thing you always wanted.
 			Reward: - Bragging rights
-					- A usefull object made from pallets
+					- A useful object made from pallets
 					- 17 Street creds
 			Tips: Talk to the house master pallet maker, Stephan.
 			XP: 50
