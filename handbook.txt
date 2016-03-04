@@ -178,7 +178,7 @@ Work-Work, the Game!(TM)
 		Side Quest: Help someone in The Community
 			Description: Through your amazing skill you possess some kind of knowledge or know-how that someone else could benefit from. By helping out someone in The Community you successfully increase the productivity of the entire house, helping others to success. Others who will do the same in return, leading you to success! 
 			Reward: 3 Street creds(WWSC).
-			Tips: You can help people out even though they did not explicitly asked for it!
+			Tips: You can help people out even though they did not explicitly ask for it!
 			XP: 19
 
 		Side Quest: Hang something on the wall
