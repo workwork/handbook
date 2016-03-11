@@ -8,9 +8,9 @@ Introduction:
 	At Work-Work we really appreciate our community. The people makes the place, so we do not want to force many rules on people, but it is, however, a necessity that there exists some rules.
 
 House Rules:
-	
+
 	Intro:
-		The house rules are divided into 4 groups. "You Must", "You Should", "You Should not", and "You Can not". The groups should be pretty self explaining. 
+		The house rules are divided into 4 groups. "You Must", "You Should", "You Should not", and "You Can not". The groups should be pretty self explaining.
 		Out of these groups, the most important are "You Must" and "You Can not". These are rules, the "You Should" and "You Should not" are more guidelines than actual rules.
 
 
@@ -25,12 +25,12 @@ House Rules:
 		-Announce what material is under NDA, if any, prior to showing it to others.
 	You should:
 		-Follow the "should" and "shouldn't" part of these rules.
-		-Involve yourself in others work. 
+		-Involve yourself in others work.
 		-Help others that ask for help.
-		-Give constructive feedback, both positive and negative. Also say what you think, don't be afraid to say things like "I think this part could be better". 
+		-Give constructive feedback, both positive and negative. Also say what you think, don't be afraid to say things like "I think this part could be better".
 		-Talk to people you don't know. Get to know everyone in the community!
-		-Actively contribute in the "pay it forward" culture. 
-		-Show other people what you are working on. 
+		-Actively contribute in the "pay it forward" culture.
+		-Show other people what you are working on.
 		-Be inclusive of people from "the outside". Feel free to invite them in and show them around.
 		-Use the bar as a prototyping platform. It is your la-BAR-atory. Ask many people, accelerate your development.
 	You should not:
@@ -42,7 +42,7 @@ House Rules:
 		-Have material under NDA
 	You can not:
 		-Break the "must" or "can't" part of these rules.
-		-Access the bar area outside of the opening hours of the bar. 
+		-Access the bar area outside of the opening hours of the bar.
 		-Bring alcohol to or from the bar area.
 		-Bring pets into the house
 		-Talk to outsiders about the projects other fellow Work-Workers are working on without their approval, unless that information is already public.
@@ -51,7 +51,7 @@ House Rules:
 
 
 Work-Work, the Game!(TM)
-	
+
 	Tutorial
 		You are new at Work-Work, welcome! This is your first day here. You have signed the contract and hopefully gotten your key. You might be feeling cheerful, or even a bit confused or scared. "What should I do?", "How does stuff work here?", "Who are all these people?" and "Who is Marius, Sverre and Stephan(MSS)?". All of these are questions you might have. "Work-Work, the Game!"(TM) is a text-only game that will guide you through your first day, week or even year at Work-Work, and help you find the answers to all of your questions!
 
@@ -80,7 +80,7 @@ Work-Work, the Game!(TM)
 			XP: 35
 
 		Main Quest: Select a desk in the co-work
-			Description: No desk, no work. Find your place in this world-world. 
+			Description: No desk, no work. Find your place in this world-world.
 			Reward: A place to sit and work.
 			Tips: Talk to Stephan to find a free spot.
 			XP: 40
@@ -93,13 +93,13 @@ Work-Work, the Game!(TM)
 
 	Work-Work level 2: The Basics
 		Main Quest: Read the Work-Work House Rules
-			Description: To achieve eudaimonia, certain rules are needed. At Work-Work these are the "House Rules".	
+			Description: To achieve eudaimonia, certain rules are needed. At Work-Work these are the "House Rules".
 			Reward: Understanding of the jungle-rules of Work-Work
 			Tips: The rules can be found in this here handbook.
 			XP: 50
 
 		Main Quest: Join Slack
-			Description: Through open communication comes true power. 
+			Description: Through open communication comes true power.
 			Reward: Communication platform to instantly communicate with anyone in the Work-Work community
 			Tips: Ask anyone in the community to invite you.
 			XP: 17
@@ -143,16 +143,22 @@ Work-Work, the Game!(TM)
 			XP: 9
 
 		Side Quest: Locate the Waste Disposal System, and learn to operate the cellulose condenser.
-			Description: If you have larger items you with to dispose of, then this is the place to go. The Waste Disposal System can deal with glass, cellulose bi-products (such as cardboard and paper) and "general waste". If you see a particular full trash bucket, you can even take the trash to this area and dispose of it! 
+			Description: If you have larger items you with to dispose of, then this is the place to go. The Waste Disposal System can deal with glass, cellulose bi-products (such as cardboard and paper) and "general waste". If you see a particular full trash bucket, you can even take the trash to this area and dispose of it!
 			Reward: Ability to dispose of waste.
-			Tips: Talk to MSS for operational instructions for the cellulose condenser. 
+			Tips: Talk to MSS for operational instructions for the cellulose condenser.
 			XP: 23
 
 		Side Quest: Notify MSS about missing toilet paper, drying paper or soap in a restroom.
-			Description: From time to time it can happen that a restroom lacks one of the necessities. When you detect this, it is the perfect time to test out slack or the Facebook group to notify MSS about the anomaly. 
+			Description: From time to time it can happen that a restroom lacks one of the necessities. When you detect this, it is the perfect time to test out slack or the Facebook group to notify MSS about the anomaly.
 			Reward: Toilet paper, drying paper or soap + a big thanks and a pat on the back.
 			Tips: You can use Slack or Facebook to notify MSS or The Bar Crew.
 			XP: 15
+
+		Side Quest: Visit Hackheim on a open day
+			Description: This perilous quest will put you through potential perils of electrocution, second degree burns, solvent exposure or just crazy ideas.
+			Rewards: Meeting somewhat crazy but friendly geeks that aspire to share their passion with technology to EVERYBODY.
+			Tips: They have open days every wednesday and sunday from 6pm, open the door, say hi!, get stuck in some random conversation until midnight.
+			XP: 10
 
 	Work-Work level 3: The Intricacies
 		Main Quest: Join, and introduce yourself at, the Community Lunch
@@ -164,19 +170,19 @@ Work-Work, the Game!(TM)
 		Main Quest: Explore every room and introduce yourself to as many Community Members as possible.
 			Description: If the people at the co-working space do not know each other, then it is hard to know where to go to get good help in case you need it. By going around and introducing your self, and tell people what you are working on and what you do/know, then the others also know when to come asking help from you.
 			Reward: 5d10 Friends
-			Tips: 	- Don't interrupt people who is very obviously "plugged in" and working hard. 
+			Tips: 	- Don't interrupt people who is very obviously "plugged in" and working hard.
 					- The Community Members are scripted to talk to you if they see you.
 			XP: 63
 
 		Main Quest: Join one of the Work-Work events
 			Description: At Work-Work there are many events, some of which will most likely interest you. A good way to show your support for The Community is to attend certain events.
 			Reward: Knowledge provided by given event.
-			Tips: 	- Follow Work-Work on facebook to get a feed of every event. 
+			Tips: 	- Follow Work-Work on facebook to get a feed of every event.
 					- A list of all events is available on work-work.no/event
 			XP: 25
 
 		Side Quest: Help someone in The Community
-			Description: Through your amazing skill you possess some kind of knowledge or know-how that someone else could benefit from. By helping out someone in The Community you successfully increase the productivity of the entire house, helping others to success. Others who will do the same in return, leading you to success! 
+			Description: Through your amazing skill you possess some kind of knowledge or know-how that someone else could benefit from. By helping out someone in The Community you successfully increase the productivity of the entire house, helping others to success. Others who will do the same in return, leading you to success!
 			Reward: 3 Street creds(WWSC).
 			Tips: You can help people out even though they did not explicitly ask for it!
 			XP: 19
@@ -198,7 +204,7 @@ Work-Work, the Game!(TM)
 			XP: 18
 
 		Side Quest: Initialize a Community Project.
-			Description: You have seen some need, or some way to induce immense glee and proudness, for The Community. You decide to embark on the concept and start the project! 
+			Description: You have seen some need, or some way to induce immense glee and proudness, for The Community. You decide to embark on the concept and start the project!
 			Reward: Massive bragging rights. 10 Street Creds
 			Tips: 	- Coordinate with others on slack
 					- Read the Community Projects 101 guide (TBA)
@@ -272,10 +278,3 @@ Stuff they do/must learn:
 		X kjøkken
 		X garderober
 		X søppelrom
-	
-
-
-
-
-
-
