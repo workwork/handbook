@@ -154,11 +154,11 @@ Work-Work, the Game!(TM)
 			Tips: You can use Slack or Facebook to notify MSS or The Bar Crew.
 			XP: 15
 
-		Side Quest: Visit Hackheim on a open day
-			Description: This perilous quest will put you through potential perils of electrocution, second degree burns, solvent exposure or just crazy ideas.
+		Side Quest: Visit Hackheim on an open day
+			Description: This perilous quest will put you through the risk of of electrocution, second degree burns, solvent exposure or just crazy ideas.
 			Rewards: Meeting somewhat crazy but friendly geeks that aspire to share their passion with technology to EVERYBODY.
 			Tips: They have open days every wednesday and sunday from 6pm, open the door, say hi!, get stuck in some random conversation until midnight.
-			XP: 10
+			XP: 34
 
 	Work-Work level 3: The Intricacies
 		Main Quest: Join, and introduce yourself at, the Community Lunch
