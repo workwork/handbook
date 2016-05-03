@@ -131,7 +131,7 @@ Work-Work, the Game!(TM)
 			XP: 5
 
 		Side Quest: Explore the Micro-Kitchen
-			Description: When the thirst for coffee and hunger for food becomes too much, this is the place for you. But please, don't use too many of the machine at once, or the fuses will blow.
+			Description: When the thirst for coffee and hunger for food becomes too much, this is the place for you. But please, don't use too many of the machines at the same time, or the fuses may blow.
 			Reward: Ability to re-heat food, boil water, refrigerate stuff and brew coffee.
 			Tips: Talk to one of the NPCs for help.
 			XP: 11
